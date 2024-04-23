@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid black;
+            font-size: 20px;
+            position: relative;
+        }
+        .backtracked {
+            text-decoration: line-through;
+            color: black;
+            font-size: 20px; /* Ensure backtracked numbers are the same size as regular numbers */
+        }
+        .failed_values {
+            font-size: 10px;
+            color: red;
+            display: block; /* Makes it easier to distinguish failed values */
+        }
+        /* Add classes for different guess stages with different text colors */
+        .guess-1 {
+            color: red;
+        }
+        .guess-2 {
+            color: blue;
+        }
+        .guess-3 {
+            color: green;
+        }
+        .guess-4 {
+            color: purple;
+        }
+        /* You can continue adding more classes for different colors as needed */
+    </style>
+</head>
+<body>
+    <h1>Sudoku Solver</h1>
+    <div id="steps">
+        {% for step in intermediate_steps %}
+            <h2>Step {{ loop.index }}</h2>
+            <table>
+                {% for row in step %}
+                    <tr>
+                        {% for cell in row %}
+                            <td class="{{ 'backtracked' if cell.is_backtracked }} {{ 'guess-' ~ cell.guess_stage if cell.guessed }}">
+                                {{ cell.value if cell.value else '' }}
+                                {% if cell.failed_values %}
+                                    <span class="failed_values">{{ cell.failed_values|join(', ') }}</span>
+                                {% endif %}
+                                {% if cell.backtracked_values %}
+                                    <!-- Filter and display each backtracked value only once -->
+                                    <span class="backtracked">
+                                        {{ cell.backtracked_values|unique|join(', ') }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    </div>
+    <div style="text-align:center; margin-top:20px;">
+        <a href="/" class="btn btn-primary">Solve Another Puzzle</a>
+    </div>
+</body>
+</html>
