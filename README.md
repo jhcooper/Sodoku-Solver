@@ -53,11 +53,22 @@ pip install -r requirements.txt
 7. **Run the Application**
 
 ```bash
-python app.py
+python flaskr/app.py
 ```
 
 8. **Open the Application in your Browser**
-Navigate to the URL displayed when app.py is ran
+Navigate to the URL displayed when app.py is ran for instance `http://127.0.0.1:5000/` from 
+```bask 
+(Sudoku-env) (base) jh@Johns-MacBook-Pro-2 Sudoku-Solver % python flaskr/app.py
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 105-850-459
+```
 
 
 
@@ -100,3 +111,22 @@ The `flaskr` directory contains the following folders and files:
 This is because revise modifies in place, which we only want to consider if AC3 is successful. 
 
 - Backtrack returns a steps list in addition to the requirements that contains information for reproducing each step of the sudoku solution.
+
+- In the final display, failed values (ones that led to backtrack) are displayed as smaller red numbers, (couldn't figure out the color changing on backtrack)
+
+
+## Input Format
+The input format is basically a lisp alist without the `defvar` , so as an example, the input for the first puzzle would be:
+
+```python
+((nil nil nil nil nil 6 nil 8 nil)
+(3 nil nil nil nil 2 7 nil nil)
+(7 nil 5 1 nil nil 6 nil nil)
+(nil nil 9 4 nil nil nil nil nil)
+(nil 8 nil nil 9 nil nil 2 nil)
+(nil nil nil nil nil 8 3 nil nil)
+(nil nil 4 nil nil 7 8 nil 5)
+(nil nil 2 8 nil nil nil nil 6)
+(nil 5 nil 9 nil nil nil nil nil))
+```
+It should also work all on one line
