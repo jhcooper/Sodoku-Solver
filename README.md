@@ -114,6 +114,9 @@ This is because revise modifies in place, which we only want to consider if AC3 
 
 - In the final display, failed values (ones that led to backtrack) are displayed as smaller red numbers, (couldn't figure out the color changing on backtrack)
 
+- It will finish running if the puzzle is solvable, just might take a while
+
+
 
 ## Input Format
 The input format is basically a lisp alist without the `defvar` , so as an example, the input for the first puzzle would be:
