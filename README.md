@@ -29,7 +29,7 @@ cd Sudoku-Solver
    
 This isn't required but helps with managing dependencies
 ```bash
-python -m venv Sudoku-env
+python -m venv sudoku-env
 ```
 
 5. **Activate the Virtual Environment**
