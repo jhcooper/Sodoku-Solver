@@ -17,31 +17,31 @@ installed on your machine. This project has been tested with Python 3.9+ and abo
 Open terminal and use the following command to clone this repository to your local machine
 
 ```bash
-git clone https://github.com/jhcooper/Sodoku-Solver.git
+git clone https://github.com/jhcooper/Sudoku-Solver.git
 ```
 
 3. **Navigate to the Project Directory**
 ```bash
-cd Sodoku-Solver
+cd Sudoku-Solver
 ```
 
 4. **Start a Virtual Environment**
    
 This isn't required but helps with managing dependencies
 ```bash
-python -m venv sodoku-env
+python -m venv Sudoku-env
 ```
 
 5. **Activate the Virtual Environment**
 
 For Windows:
 ```bash
-sodoku-env\Scripts\activate
+sudoku-env\Scripts\activate
 ```
 
 For MacOS and Linux:
 ```bash
-source sodoku-env/bin/activate
+source sudoku-env/bin/activate
 ```
 
 6. **Install the Required Dependencies**
@@ -72,14 +72,14 @@ All project-related files and ode can be found within the `flaskr` directory.
 
 The `flaskr` directory contains the following folders and files:
 
-- **Puzzles (Folder)**: A folder containing various CSP representations of some of the puzzles found in the directions, as well as the original `sodoku-constraints.lisp` file
+- **Puzzles (Folder)**: A folder containing various CSP representations of some of the puzzles found in the directions, as well as the original `sudoku-constraints.lisp` file
 
 - **Templates (Folder)**: Contains the HTML files for the web interface
   - `input.html` to handle user input 
   - `display.html` to display the solved puzzle steps.
 
 - **Unused (Folder)**:
-  - the original `sodoku-constraints.lisp` 
+  - the original `sudoku-constraints.lisp` 
   - a python script I wrote to convert it to a python dictionary (`'generate-python-constraints.py`), and the output of that program
 
 - **Utility (Folder)**: Contains 
@@ -99,4 +99,4 @@ The `flaskr` directory contains the following folders and files:
 - ac3 returns a csp as well as the boolean flag. The csp returned is either the original csp if AC3 failed, or the csp with the reduced domains if AC3 succeeded. 
 This is because revise modifies in place, which we only want to consider if AC3 is successful. 
 
-- Backtrack returns a steps list in addition to the requirements that contains information for reproducing each step of the sodoku solution.
+- Backtrack returns a steps list in addition to the requirements that contains information for reproducing each step of the sudoku solution.
