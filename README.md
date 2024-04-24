@@ -107,9 +107,6 @@ The `flaskr` directory contains the following folders and files:
 
 ## Project Notes
 
-- ac3 returns a csp as well as the boolean flag. The csp returned is either the original csp if AC3 failed, or the csp with the reduced domains if AC3 succeeded. 
-This is because revise modifies in place, which we only want to consider if AC3 is successful. 
-
 - Backtrack returns a steps list in addition to the requirements that contains information for reproducing each step of the sudoku solution.
 
 - In the final display, failed values (ones that led to backtrack) are displayed as smaller red numbers, (couldn't figure out the color changing on backtrack)

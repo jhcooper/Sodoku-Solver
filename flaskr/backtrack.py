@@ -1,6 +1,7 @@
 from ac3 import ac3
 from mrv import minimum_remaining_values
 import copy
+from puzzles.constraints import csp
 
 
 def backtrack(
@@ -64,10 +65,10 @@ def backtrack(
                 }
             )
 
-            status, ac3_csp = ac3(local_csp)
+            status = ac3(local_csp)
             if status:
                 result = backtrack(
-                    ac3_csp, assignment.copy(), order, to_assign, failed, prev, steps
+                    local_csp, assignment.copy(), order, to_assign, failed, prev, steps
                 )
                 if result is not None:
                     return result
@@ -75,6 +76,7 @@ def backtrack(
             failed[var].append(value)
             prev[var] += 1
             del assignment[var]
+            local_csp = copy.deepcopy(csp)
             order.pop()
             steps.append(
                 {
@@ -137,3 +139,17 @@ def is_consistent(val, v1, csp, assignment):
             if not (assignment[v2], val) in csp["constraints"][(v2, v1)]:
                 return False
     return True
+
+
+def main():
+    print("=====================Searching=====================")
+    assignment, order, to_assign, failed, prev, steps = backtrack(csp)
+    print(f"\n=====================Assignments=====================\n{assignment}")
+    print(f"\n=====================Order=====================\n{order}")
+    print(f"\n=====================To Assign=====================\n{to_assign}")
+    print(f"\n=====================Failed=====================\n{failed}")
+    print(f"\n=====================Prev=====================\n{prev}")
+
+
+if __name__ == "__main__":
+    main()

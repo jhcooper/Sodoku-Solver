@@ -1,3 +1,6 @@
+from puzzles.constraints import csp
+
+
 def minimum_remaining_values(csp: dict, assigned: dict):
     """
     Selects the variable with the minimum remaining values in its domain
@@ -14,13 +17,21 @@ def minimum_remaining_values(csp: dict, assigned: dict):
 
     """
     domains = csp["variables"]
-    unnassigned = [v1 for v1 in domains if v1 not in assigned]
+    unassigned = set(csp["variables"].keys()) - set(assigned.keys())
 
-    if not unnassigned:
+    if not unassigned:
         return False
 
-    mrv = unnassigned[0]
-    for v1 in unnassigned:
+    mrv = unassigned.pop()
+    for v1 in unassigned:
         if len(domains[v1]) < len(domains[mrv]):
             mrv = v1
     return mrv
+
+
+def main():
+    print(minimum_remaining_values(csp, {}))
+
+
+if __name__ == "__main__":
+    main()

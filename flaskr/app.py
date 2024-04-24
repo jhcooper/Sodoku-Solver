@@ -26,6 +26,11 @@ def solve():
 
     assignment, order, to_assign, failed, prev, steps = backtrack(puzzle)
     intermediate_steps = []  # stores info for each individual board state
+    print(f"\n=====================Assignments=====================\n{assignment}")
+    print(f"\n=====================Order=====================\n{order}")
+    print(f"\n=====================To Assign=====================\n{to_assign}")
+    print(f"\n=====================Failed=====================\n{failed}")
+    print(f"\n=====================Prev=====================\n{prev}")
 
     for step in steps:
         state = step["state"]
